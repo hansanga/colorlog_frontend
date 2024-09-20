@@ -45,7 +45,7 @@ const Colorlog = () => {
   const [mediaUrls, setMediaUrls] = useState({ imagePath: "", videoPath: "" });
 
   useEffect(() => {
-    axios.get(`http://35.216.11.182:8080/api/user/get_result`, {
+    axios.get(`http://35.216.11.182:8080/api/api/user/get_result`, {
         params: { userId }
     })
         .then(response => {
@@ -59,7 +59,7 @@ const Colorlog = () => {
 useEffect(() => {
     async function fetchData() {
         try {
-            const response = await axios.get('http://35.216.11.182:8080/api/photogroup/get_photogroup', {
+            const response = await axios.get('http://35.216.11.182:8080/api/api/photogroup/get_photogroup', {
                 params: { userId }
             });
             setMediaUrls(response.data);
@@ -139,13 +139,13 @@ function downloadFile(url, extension) {
           <h1>여름쿨톤</h1>
           <ProfileImage src={resultImagePath} alt="Color Tone" />
           <Options $backgroundColor="rgba(109, 111, 151, 0.5)">
-            <OptionItem $image={Image}>
-              <a href="/path1">
+            <OptionItem $image={Image} onClick={handleClick1}>
+              <a href={`/user/${userId}`}>
                 <span onClick={handleClick1}>네컷 저장</span>
               </a>
             </OptionItem>
-            <OptionItem $video={Video}>
-              <a href="/path2">
+            <OptionItem $video={Video} onClick={handleClick2}>
+              <a href={`/user/${userId}`}>
                 <span onClick={handleClick2}>동영상 저장</span>
               </a>
             </OptionItem>
@@ -161,12 +161,12 @@ function downloadFile(url, extension) {
         <BestColor>
           <h3>best color</h3>
           <ColorCircles>
-            <Circle bgColor="#f7b0e3" />
-            <Circle bgColor="#ce82da" />
-            <Circle bgColor="#e8f0c3" />
-            <Circle bgColor="#9ae7d6" />
-            <Circle bgColor="#8dcff5" />
-            <Circle bgColor="#6775c4" />
+          <Circle bgColor="#9EA8FF" />
+          <Circle bgColor="#03006B" />
+          <Circle bgColor="#520080" />
+          <Circle bgColor="#6A1F2B" />
+          <Circle bgColor="#2F6C73" />
+          <Circle bgColor="#234724" />
           </ColorCircles>
           <LineBelowCircles />
         </BestColor>

@@ -1,61 +1,57 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
+// 각 계절 컴포넌트를 임포트합니다.
+import Summer from "./ver2/summer"; 
+import Spring from "./ver2/spring";
+import Autumn from "./ver2/autumn";
+import Winter from "./ver2/winter";
+
 const UserPage = () => {
-  const { userId } = useParams(); // URL에서 userId 가져오기
-  const navigate = useNavigate(); // 페이지 이동을 위한 훅
-  const [result, setResult] = useState(null); // 컬러 결과 상태
-  const [loading, setLoading] = useState(true); // 로딩 상태
-  const [error, setError] = useState(false); // 에러 상태
+  const { userId } = useParams(); 
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    // 데이터를 받아오기 위해 axios 호출
     axios
-      .get("http://35.216.11.182:8080/api/user/get_result", {
+      .get("http://35.216.11.182:8080/api/api/user/get_result", {
         params: { userId },
       })
       .then((response) => {
-        const colorResult = response.data.result;
-        setResult(colorResult); // 결과 저장
-        setLoading(false); // 로딩 끝
-
-        // 결과에 따라 다른 페이지로 리디렉션
-        if (colorResult === "여름 쿨톤") {
-          navigate("/summer");
-        } else if (colorResult === "봄 웜톤") {
-          navigate("/spring");
-        } else if (colorResult === "가을 웜톤") {
-          navigate("/autumn");
-        } else if (colorResult === "겨울 쿨톤") {
-          navigate("/winter");
-        } else {
-          console.error("Unrecognized color result: ", colorResult);
-        }
+        setResult(response.data.result); 
+        setLoading(false); 
       })
       .catch((error) => {
         console.error("There was an error!", error);
-        setError(true); // 에러 발생 시 상태 설정
-        setLoading(false); // 로딩 끝
+        setError(true); 
+        setLoading(false); 
       });
-  }, [userId, navigate]);
+  }, [userId]);
 
-  // 로딩 중일 때 표시할 화면
+  // 로딩 중일 때
   if (loading) {
-    return <div><p>Loading user data...</p></div>;
+    return <div>Loading user data...</div>;
   }
 
-  // 에러가 발생했을 때 표시할 화면
+  // 에러 발생 시
   if (error) {
-    return <div><p>There was an error loading the user data.</p></div>;
+    return <div>There was an error loading the user data.</div>;
   }
 
-  // 로딩이 끝났지만 페이지 리디렉션이 안되었을 경우 (예외적인 상황)
-  return (
-    <div>
-      <p>Unexpected behavior. Color result: {result}</p>
-    </div>
-  );
+  // 각 컬러 톤 결과에 따라 컴포넌트 렌더링
+  if (result === "여름 쿨톤") {
+    return <Summer userId={userId} />;
+  } else if (result === "봄 웜톤") {
+    return <Spring userId={userId} />;
+  } else if (result === "가을 웜톤") {
+    return <Autumn userId={userId} />;
+  } else if (result === "겨울 쿨톤") {
+    return <Winter userId={userId} />;
+  } else {
+    return <div>Unrecognized color result: {result}</div>;
+  }
 };
 
 export default UserPage;
