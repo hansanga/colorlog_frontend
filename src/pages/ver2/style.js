@@ -61,7 +61,7 @@ export const ColorInfo = styled.section`
   background-repeat: no-repeat;
   padding-top: 10px;
   margin-top: 10px;
-  height: 385px;
+  height: 390px;
   width: 100%;
   h2 {
     margin: 10px;
@@ -83,7 +83,8 @@ export const ColorInfo = styled.section`
 // Profile image styling
 export const ProfileImage = styled.img`
   width: 110px;
-  height: auto;
+  height: 157.77;
+  object-fit: cover;
   margin-top: 20px;
 `;
 
