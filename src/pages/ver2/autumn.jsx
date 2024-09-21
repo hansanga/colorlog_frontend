@@ -136,7 +136,7 @@ function downloadFile(url, extension) {
 
         <ColorInfo $backImg={BackImg} $color="#D8C1B1">
           <h2>당신의 컬러:</h2>
-          <h1>여름쿨톤</h1>
+          <h1>가을웜톤</h1>
           <ProfileImage src={resultImagePath} alt="Color Tone" />
           <Options $backgroundColor="rgba(137, 110, 92, 0.5)">
             <OptionItem $image={Image} onClick={handleClick1}>
@@ -172,7 +172,7 @@ function downloadFile(url, extension) {
         </BestColor>
 
         <Celebrities>
-          <p>여름 쿨톤의 대표적인 연예인으로는</p>
+          <p>가을 웜톤의 대표적인 연예인으로는</p>
           <p>
             {" "}
             <strong>제니</strong>님, <strong>이성경</strong>님,{" "}

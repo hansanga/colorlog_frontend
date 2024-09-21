@@ -136,7 +136,7 @@ function downloadFile(url, extension) {
 
         <ColorInfo $backImg={BackImg} $color="#BEC0E1">
           <h2>당신의 컬러:</h2>
-          <h1>여름쿨톤</h1>
+          <h1>겨울쿨톤</h1>
           <ProfileImage src={resultImagePath} alt="Color Tone" />
           <Options $backgroundColor="rgba(109, 111, 151, 0.5)">
             <OptionItem $image={Image} onClick={handleClick1}>
@@ -172,7 +172,7 @@ function downloadFile(url, extension) {
         </BestColor>
 
         <Celebrities>
-          <p>여름 쿨톤의 대표적인 연예인으로는</p>
+          <p>겨울 쿨톤의 대표적인 연예인으로는</p>
           <p>
             {" "}
             <strong>임지연</strong>님, <strong>카리나</strong>님,{" "}
