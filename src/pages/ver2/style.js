@@ -21,7 +21,6 @@ export const AppContainer = styled.div`
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
   margin: 0;
-  height: 230vh;
 `;
 
 // Main container
@@ -29,6 +28,8 @@ export const ColorlogContainer = styled.div`
   font-family: "Arial", sans-serif;
   text-align: center;
   color: #333;
+  margin-bottom: 20%;
+  height: 100%;
 `;
 
 // Header styling
